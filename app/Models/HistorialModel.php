@@ -8,7 +8,6 @@ class HistorialModel extends Model {
 
     protected $useAutoIncrement = true;
 
-
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
 

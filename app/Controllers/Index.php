@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Controllers\BaseController;
+use App\Models\HistorialModel;
 use App\Models\ModelUsuario;
 use App\Models\PuntosModel;
 
@@ -12,7 +13,7 @@ class Index extends BaseController
 	{
 	return view('login');
 	}
-
+    // Validar datos de ingreso
 	public function ValidarDatosIngreso()
     {
        $valor_email = $this->request->getPostGet('email');
@@ -54,14 +55,9 @@ class Index extends BaseController
 			return redirect()->to(base_url('/'))->with('mensaje','0');
 		}
 	}
+   
 
-	public function salir() {
-		$session = session();
-		$session->destroy();
-		return redirect()->to(base_url('/'));
-	}
-
-
+    // Cargar Vista del usuario
 	public function cargarVistaInicio()
 	{
 		$punto_nivel= new PuntosModel();
@@ -79,6 +75,13 @@ class Index extends BaseController
      return view('login');
    }
 
+    // Cerrar Sesión 
+	public function salir() {
+		$session = session();
+		$session->destroy();
+		return redirect()->to(base_url('/'));
+	}
+
     //    REGISTRO DE USUARIO
 	public function registro(){
       echo view('registro');
@@ -94,6 +97,7 @@ class Index extends BaseController
 		$direccion = $this->request->getPostGet('direccion');
 		$genero = $this->request->getPostGet('genero');
 		$departamento = $this->request->getPostGet('departamento');
+		$puntos =$this->request->getPostGet('puntos');
 	
 		$usuario = new ModelUsuario();
 
@@ -121,6 +125,16 @@ class Index extends BaseController
 					// Administrador
 				]);
 				if ($registros) {
+					$punto_nivel= new PuntosModel();
+
+		            // Ingresando datos DB Historial de puntos 
+					$db_puntos =new HistorialModel();
+					$db_puntos ->insert([
+						'usuario_id' => $usuario->getInsertID(),
+						'acum_point' => $puntos,
+						'id_nivel'   => $punto_nivel->getInsertID(),
+					]);
+
 					$mensaje = "OK#CORRECT#DATA";
 				} else {
 					$mensaje = "OK#INVALID#DATA";
