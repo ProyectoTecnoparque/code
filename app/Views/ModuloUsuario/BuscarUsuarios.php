@@ -8,7 +8,6 @@
 
             </div>
             <div class="card-body">
-       
                 <div class="table-responsive mt-4">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
@@ -37,7 +36,7 @@
                                     <td><?php echo $dato['departamento']; ?></td>
                                     <td><?php echo $dato['estado']; ?></td>
                                     <td><a type="button" class="btn btn-primary mr-2 modal_edit" href="<?php echo base_url('/ModuloUsuarios/BuscarusuId?doc=') . $dato['id']; ?>"><i class="far fa-eye"></i></a><a class="btn btn-danger toastrDefaultSuccess desactivar"><i class="fas fa-user-lock"></i></a></td>
-                                        
+                                     
                                 </tr>
                             <?php } ?>
                         </tbody>
