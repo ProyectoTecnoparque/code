@@ -13,14 +13,13 @@
 
     <!-- Custom fonts for this template-->
     <link href="<?php echo base_url('/vendor/fontawesome-free/css/all.min.css'); ?>" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="<?php echo base_url('/https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i'); ?>" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="<?php echo base_url('/css/sb-admin-2.min.css'); ?>" rel="stylesheet">
 
 </head>
 
-<body class="" style="background-image: url(https://img2.viajar.elperiodico.com/63/c0/c5/eje-cafetero-colombiano.jpg);background-repeat:no-repeat; background-size:cover" >
+<body class="" style="background-image: url(https://img2.viajar.elperiodico.com/63/c0/c5/eje-cafetero-colombiano.jpg); background-repeat:no-repeat; background-size:cover" >
 
     <div class="container">
 
@@ -49,7 +48,7 @@
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                
+                                                <label class="custom-control-label" for="customCheck">Recordar Sesión</label>
                                             </div>
                                         </div>
                                         <button  type="submit" class="btn btn-primary btn-user btn-block">Iniciar</button>
@@ -94,13 +93,13 @@
         });
 
         function validarDatosIngreso() {
-            email = $("#email").val();
-            password = $("#password").val();
+            valor_email = $("#email").val();
+            valor_pass = $("#password").val();
 
-            if (email != "" && password != "") {
+            if (valor_email != "" && valor_pass != "") {
                
                 $.ajax({
-                        url: "<?php echo base_url('/Index/ValidarDatosIngreso');?>",
+                        url: "<?php echo base_url('/Index/ValidarDatosIngreso') ?>",
                         type: 'POST',
                         dataType: 'text',
                         data: {
@@ -111,14 +110,21 @@
                     .done(function(data) {
                         if (data == "OK##DATA##LOGIN") {
                             window.location = "<?php echo base_url('/Index/cargarVistaInicio'); ?>";
-                              console.log(data);
+
                         }else if (data == "ERROR##INVALID##DATA") {
-                         Swal.fire({
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ya esta registrado en el sistema!',
+                            text: 'El correo ingresado ya esta registrado.'
+                        })
+                        } else {
+                            $("#campo_password").val("");
+                            Swal.fire({
                                 icon: 'error',
                                 title: 'Oops...',
                                 text: 'No se pudo encontrar el usuario',
                             })
-                        } 
+                        }
                     })
                     .fail(function(data) {
                         console.log(data);

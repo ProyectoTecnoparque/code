@@ -35,11 +35,13 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Index::index');
 $routes->get('/Registrar', 'Index::registro');
 $routes->get('/Registrarusuario', 'Index::Registrarusuario');
-$routes->get('/cerrarSession', 'Index::cerrarSession');
+$routes->get('/cerrarsession', 'Index::cerrarsession');
 $routes->get('/cargarVistaInicio', 'Index::cargarVistaInicio');
 $routes->get('/ValidarDatosIngreso', 'Index::ValidarDatosIngreso');
 $routes->get('/Puntos', 'Puntos::historial_punto');
 $routes->get('/Historial', 'Historial::historial_expe');
+
+
 
 
 // $routes->group('ModuloUsuario', ['namespace' => 'App\Controllers\ModuloUsuario'], function ($routes) {

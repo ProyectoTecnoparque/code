@@ -2,8 +2,8 @@
 
 use CodeIgniter\Model;
 
-class ModelUsuario extends Model {
-    protected $table      = 'usuario';
+class PuntosModel extends Model {
+    protected $table      = 'punto_nivel';
     protected $primaryKey = 'id';
 
     protected $useAutoIncrement = true;
@@ -12,10 +12,10 @@ class ModelUsuario extends Model {
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['email', 'password', 'documento', 'nombres', 'apellidos', 'tipo_usuario', 'direccion', 'genero','departamento', 'estado'];
+    protected $allowedFields = ['Nivel', 'puntos', 'valor'];
 
     protected $useTimestamps = false;
-    protected $createdField  = 'fecha_insert';
+    protected $createdField  = '';
     protected $updatedField  = '';
     protected $deletedField  = '';
 

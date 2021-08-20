@@ -12,7 +12,6 @@ class Index extends BaseController
 	{
 	return view('login');
 	}
-
 	public function ValidarDatosIngreso()
     {
        $valor_email = $this->request->getPostGet('email');
@@ -20,48 +19,21 @@ class Index extends BaseController
  
        $usuario = new ModelUsuario();
        $registros = $usuario->where(['email' => $valor_email, 'password' => $valor_pass])->find();
-
-       if (count($registros) > 0) {
-			    $mensaje = 'OK##DATA##LOGIN';
+ 
+       if (sizeof($registros) == 0) {
+			echo view('template/header');
+			echo view('table_puntos');
+			echo view('template/footer');
        } else {
              $this->session->set($registros[0]);
-             $mensaje = 'ERROR##INVALID##DATA';
+             $mensaje = 'OK##DATA##LOGIN';
+
+			echo view('template/header');
+			echo view('table_puntos');
+			echo view('template/footer');
        }
        echo $mensaje;
     }
-    	
-    public function login() {
-		$usuario = $this->request->getPost('usuario');
-		$password = $this->request->getPost('password');
-		$Usuario = new ModelUsuario();
-
-		$datosUsuario = $Usuario->obtenerUsuario(['usuario' => $usuario]);
-
-		if (count($datosUsuario) > 0 && 
-			password_verify($password, $datosUsuario[0]['password'])) {
-
-			$data = [
-						"usuario" => $datosUsuario[0]['usuario'],
-						"type" => $datosUsuario[0]['type']
-					];
-
-			$session = session();
-			$session->set($data);
-
-			return redirect()->to(base_url('/inicio'))->with('mensaje','1');
-
-		} else {
-			return redirect()->to(base_url('/'))->with('mensaje','0');
-		}
-	}
-
-	public function salir() {
-		$session = session();
-		$session->destroy();
-		return redirect()->to(base_url('/'));
-	}
-
-
 	public function cargarVistaInicio()
 	{
 		$punto_nivel= new PuntosModel();
@@ -69,21 +41,20 @@ class Index extends BaseController
 		$data =['datos' => $niveles];
   
 	    echo view('template/header');
-		 echo view('table_puntos',$data);
-		 echo view('template/footer');
+		echo view('table_puntos',$data);
+		echo view('template/footer');
 	  
 	}
 
-	 public function cerrarSession()
-   {
-     return view('login');
-   }
+	public function cerrarsession()
+	{
+		echo view('login');
+	}
 
     //    REGISTRO DE USUARIO
 	public function registro(){
       echo view('registro');
 	}
-
 	public function registrarusuario()
 	{
 		$documento = $this->request->getPostGet('documento');
@@ -94,7 +65,7 @@ class Index extends BaseController
 		$direccion = $this->request->getPostGet('direccion');
 		$genero = $this->request->getPostGet('genero');
 		$departamento = $this->request->getPostGet('departamento');
-	
+
 		$usuario = new ModelUsuario();
 
 		$consulta = $usuario->where(['documento' => $documento])->find();
@@ -117,7 +88,6 @@ class Index extends BaseController
 					'genero' => $genero,
 					'departamento' => $departamento,
 					'estado' => 'Activo',
-					'tipo_usuario' => 'Usuario',
 				]);
 				if ($registros) {
 					$mensaje = "OK#CORRECT#DATA";

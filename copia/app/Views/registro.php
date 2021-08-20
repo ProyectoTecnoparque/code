@@ -180,7 +180,6 @@
           direccion = $('#direccion').val();
           genero = $('#genero').val();
           departamento = $('#departamento').val();
-          
 
           if(documento != "" && nombres != "" && apellidos!= "" && email!= "" && password != ""   && direccion!= "" &&genero!= "" && departamento!= "" && passwordconfirm!= ""){
             $.ajax({
@@ -218,6 +217,7 @@
                      showDenyButton: true,
                      showCancelButton: true,
                      confirmButtonText: `Aceptar`,
+                     denyButtonText: `cancelar`,
                      }).then((result) => {
                      /* Read more about isConfirmed, isDenied below */
                      if (result.isConfirmed) {
@@ -237,7 +237,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: 'Error!',
-                        text: 'Los datos del usuario NO han sido registrados.'
+                        text: 'Los datos del usuario han sido registrados.'
                     })
                   }
             })
@@ -256,6 +256,7 @@
             })
           }
         }
+   
    
    </script>
 

@@ -1,5 +1,8 @@
 <!-- Begin Page Content -->
          <div class="container-fluid">
+
+                   
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -12,20 +15,24 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>Id</th>
                                             <th>Nivel</th>
                                             <th>Puntos Requeridos</th>
                                             <th>Valor</th>
                                         </tr>
                                     </thead>
+        
                                     <tbody>
                                         <?php foreach ($datos as $dato) {?>
                                         <tr>
-                                            <input  type="hidden" value="<?php echo $dato['id']; ?>">
+                                            <td><?php echo $dato['id']; ?></td>
                                             <td><?php echo $dato['Nivel']; ?></td>
                                             <td><?php echo $dato['puntos']; ?></td>
                                             <td><?php echo $dato['valor']; ?></td>
+                                            
                                         </tr>
-                                         <?php } ?>    
+                                         <?php } ?>
+                                        
                                     </tbody>
                                 </table>
                             </div>

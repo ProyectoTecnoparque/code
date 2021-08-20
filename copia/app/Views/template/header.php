@@ -1,10 +1,12 @@
 <?php
 if (!isset($_SESSION['nombres'])) {
-  header("Location: " . base_url('/Index/cargarVistaInicio'));
-}
-?>   
+    header("Location: " . base_url('/Index/cargarVistaInicio'));
+    
+  }
+?>
 <!DOCTYPE html>
-<html lang="es"> 
+<html lang="es">
+    
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,15 +20,19 @@ if (!isset($_SESSION['nombres'])) {
     <!-- Custom styles for this template-->
     <link href="<?php echo base_url('/css/sb-admin-2.min.css');?>" rel="stylesheet">
     <link href="<?php echo base_url('/vendor/datatables/dataTables.bootstrap4.min.css');?>" rel="stylesheet">
+    
 </head>
+
 <body id="page-top">
+
     <!-- Page Wrapper -->
     <div id="wrapper">
+
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('/Index/cargarVistaInicio'); ?>">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php base_url(); ?>">
                 <div class="sidebar-brand-icon ">
                     <i><img src="<?php echo base_url('/img/travel.png'); ?>" width="80" height="80"></i>
                 </div>
@@ -38,7 +44,7 @@ if (!isset($_SESSION['nombres'])) {
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="<?php echo base_url('/Index/cargarVistaInicio'); ?>">
+                <a class="nav-link" href="<?php base_url();?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Inicio</span></a>
             </li>
@@ -85,10 +91,12 @@ if (!isset($_SESSION['nombres'])) {
 
             <!-- Divider -->
             <hr class="sidebar-divider">
+
             <!-- Heading -->
             <div class="sidebar-heading">
                 Progreso
-            </div
+            </div>
+        
             <!-- Nav Item - Charts -->
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url('/Puntos');?>">

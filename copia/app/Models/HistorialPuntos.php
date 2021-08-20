@@ -2,20 +2,19 @@
 
 use CodeIgniter\Model;
 
-class ModelUsuario extends Model {
-    protected $table      = 'usuario';
+class HistorialPuntos extends Model {
+    protected $table      = 'point_acum';
     protected $primaryKey = 'id';
 
     protected $useAutoIncrement = true;
 
-
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['email', 'password', 'documento', 'nombres', 'apellidos', 'tipo_usuario', 'direccion', 'genero','departamento', 'estado'];
+    protected $allowedFields = ['usuario_id','acum_point','id_nivel'];
 
     protected $useTimestamps = false;
-    protected $createdField  = 'fecha_insert';
+    protected $createdField  = '';
     protected $updatedField  = '';
     protected $deletedField  = '';
 
