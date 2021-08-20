@@ -40,16 +40,19 @@ $routes->get('/cargarVistaInicio', 'Index::cargarVistaInicio');
 $routes->get('/ValidarDatosIngreso', 'Index::ValidarDatosIngreso');
 $routes->get('/Puntos', 'Puntos::historial_punto');
 $routes->get('/Historial', 'Historial::historial_expe');
-
+$routes->get('/BuscarUsuarios','BuscarUsuarios:: listar_usuarios');
 
 // $routes->group('ModuloUsuario', ['namespace' => 'App\Controllers\ModuloUsuario'], function ($routes) {
-// 	$routes->get('RegistarUsuario','Registro::registrar_datos');
-// 	$routes->get('Registrar', 'Registro::registro');
+// 	$routes->get('BuscarUsuarios','BuscarUsuarios:: index');
 // });
 
-$routes->group('ModuloPuntos', ['namespace' => 'App\Controllers\ModuloPuntos'], function ($routes) {
+// $routes->group('ModuloPuntos', ['namespace' => 'App\Controllers\ModuloPuntos'], function ($routes) {
+// 	$routes->get('Puntos', 'Puntos::historial_punto');
 	 
-});
+// });
+
+
+
 
 /*
  * --------------------------------------------------------------------

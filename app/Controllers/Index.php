@@ -65,8 +65,8 @@ class Index extends BaseController
 		$data =['datos' => $niveles];
   
 	    echo view('template/header');
-		 echo view('table_puntos',$data);
-		 echo view('template/footer');
+		echo view('table_puntos',$data);
+		echo view('template/footer');
 	  
 	}
 
@@ -100,12 +100,13 @@ class Index extends BaseController
 		$puntos =$this->request->getPostGet('puntos');
 	
 		$usuario = new ModelUsuario();
-
 		$consulta = $usuario->where(['documento' => $documento])->find();
+
 
 		if (sizeof($consulta) > 0) {
 			$mensaje = "FAIL#DOCUMENTO";
 		} else {
+
 			$consulta = $usuario->where(['email' => $email])->find();
 
 			if (sizeof($consulta) > 0) {
@@ -126,13 +127,14 @@ class Index extends BaseController
 				]);
 				if ($registros) {
 					$punto_nivel= new PuntosModel();
+					$acumpoint = $punto_nivel->where(['puntos' <= $puntos])->find('id');
 
 		            // Ingresando datos DB Historial de puntos 
 					$db_puntos =new HistorialModel();
 					$db_puntos ->insert([
 						'usuario_id' => $usuario->getInsertID(),
 						'acum_point' => $puntos,
-						'id_nivel'   => $punto_nivel->getInsertID(),
+						'id_nivel'   => $acumpoint,
 					]);
 
 					$mensaje = "OK#CORRECT#DATA";

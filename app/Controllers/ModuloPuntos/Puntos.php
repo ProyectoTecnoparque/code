@@ -1,24 +1,22 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Controllers\BaseController;
-use App\Models\PuntosModel;
+use App\Models\HistorialPuntos;
 
-class Index extends BaseController
-
+class Puntos extends BaseController
 {
-	public function puntos()
-	{  
-      $puntos_nivel= new PuntosModel();
-      $niveles = $this->punto_nivel->findAll();
-      $data =['datos' => $niveles];
+      public function historial_punto()
+      {
+            $punto_acum = new HistorialPuntos();
+            $acumulador = $punto_acum->findAll();
+            $data = ['datos' => $acumulador];
 
-	return view('template/header');
-      return view('table_puntos',$data);
-      return view('template/footer');
-	}
-
-	
-	
+            echo view('template/header');
+            echo view('Puntos/acum_puntos',$data);
+            echo view('template/footer');
+      }
 }
+
 

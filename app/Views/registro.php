@@ -94,8 +94,6 @@
                               </select>
                            </div>
 
-                           
-
                            <div class="input-group mb-3">
                               <input type="number" class="form-control" id="puntos" name="puntos" placeholder="Puntos">
                               <div class="input-group-append mr-2">
@@ -110,7 +108,6 @@
                                     <option value="2">Quindio</option>
                                     <option value="3">Caldas</option>
                               </select>
-                              
                            </div>
 
                            <div class="input-group mb-3">

@@ -83,17 +83,25 @@ if (!isset($_SESSION['nombres'])) {
                 </div>
             </li>
 
+            
+
             <!-- Divider -->
             <hr class="sidebar-divider">
             <!-- Heading -->
             <div class="sidebar-heading">
                 Progreso
-            </div
+            </div>
             <!-- Nav Item - Charts -->
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url('/Puntos');?>">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Puntos Acumulados</span></a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('/BuscarUsuarios');?>">
+                <i class="fas fa-users"></i>
+                <span>Lista de Usuarios</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
@@ -118,6 +126,7 @@ if (!isset($_SESSION['nombres'])) {
 
             <!-- Main Content -->
             <div id="content">
+
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
