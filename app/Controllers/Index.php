@@ -118,6 +118,7 @@ class Index extends BaseController
 					'departamento' => $departamento,
 					'estado' => 'Activo',
 					'tipo_usuario' => 'Usuario',
+					// Administrador
 				]);
 				if ($registros) {
 					$mensaje = "OK#CORRECT#DATA";
