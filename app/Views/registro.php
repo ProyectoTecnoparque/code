@@ -74,8 +74,6 @@
                               </div>
                            </div>
 
-                           
-
                            <div class="input-group mb-3">
                               <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Dirección">
                               <div class="input-group-append">
@@ -128,9 +126,7 @@
                            <br>
                            <div class="row">
                               <div class="col-6">
-                                 <div class="icheck-primary">
-
-                                 </div>
+                                
                               </div>
                               <!-- /.col -->
                               <div class="col-3">

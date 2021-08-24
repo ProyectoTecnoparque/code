@@ -41,14 +41,16 @@ $routes->get('/ValidarDatosIngreso', 'Index::ValidarDatosIngreso');
 $routes->get('/Puntos', 'Puntos::historial_punto');
 $routes->get('/Historial', 'Historial::historial_expe');
 
-$routes->get('/BuscarUsuarios','BuscarUsuarios:: listar_usuarios');
+// Modulo Usuarios Vista Administrador
 
-$routes->get('/BuscarId','BuscarUsuarios:: Buscar_id');
+$routes->get('/BuscarUsuarios','BuscarUsuarios::listar_usuarios');
+$routes->get('/BuscarId','BuscarUsuarios::Buscar_id');
+
 
 
 // $routes->group('ModuloUsuario', ['namespace' => 'App\Controllers\ModuloUsuario'], function ($routes) {
-// 	$routes->get('BuscarUsuarios','BuscarUsuarios:: index');
-// });
+// $routes->get('BuscarUsuarios','BuscarUsuarios:: index');
+//  });
 
 // $routes->group('ModuloPuntos', ['namespace' => 'App\Controllers\ModuloPuntos'], function ($routes) {
 // 	$routes->get('Puntos', 'Puntos::historial_punto');

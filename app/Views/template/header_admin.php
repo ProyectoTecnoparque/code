@@ -1,9 +1,4 @@
-<?php
-if (!isset($_SESSION['tipo_usuario'])) {
-  header("Location: " . base_url());
-  die();
-}
-?> 
+
 <!DOCTYPE html>
 <html lang="es"> 
 <head>
@@ -99,18 +94,17 @@ if (!isset($_SESSION['tipo_usuario'])) {
                     <span>Puntos Acumulados</span></a>
             </li>
             
-           
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('BuscarUsuarios'); ?>">
+                <i class="fas fa-users"></i>
+                <span>Lista de Usuarios</span></a>
+            </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url('/Historial'); ?>">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Historial</span></a>
-            </li>
-             <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url(''); ?>">
-                <i class="fas fa-user"></i>
-                <span>Perfil</span></a>
             </li>
 
             <!-- Divider -->

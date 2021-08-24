@@ -129,7 +129,7 @@ class Index extends BaseController
 					$punto_nivel= new PuntosModel();
 					$acumpoint = $punto_nivel->where(['puntos' <= $puntos])->find('id');
 
-		            // Ingresando datos DB Historial de puntos 
+		         // Ingresando datos DB Historial de puntos 
 					$db_puntos =new HistorialModel();
 					$db_puntos ->insert([
 						'usuario_id' => $usuario->getInsertID(),
@@ -145,6 +145,16 @@ class Index extends BaseController
 		}
 		echo $mensaje;
 	}
+  public function cargarVistaInicio()
+   {
+      if ($this->session->has("tipo_usuario")) {
+         echo view('template/header');
+         echo view('ModuloUsuarios/perfil');
+         echo view('template/footer');
+      } else {
+         return view('login');
+      }
+   }
 
 }
 
