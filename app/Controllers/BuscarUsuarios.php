@@ -12,6 +12,7 @@ class BuscarUsuarios extends BaseController
 		$usuario = new ModelUsuario();
 		$usuarios = $usuario->findAll();
 		$data = ['datos' => $usuarios];
+		 
 
 		echo view('template/header');
 		echo view('ModuloUsuario/BuscarUsuarios', $data);

@@ -12,6 +12,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>Id</th>
                                             <th>Nivel</th>
                                             <th>Puntos Requeridos</th>
                                             <th>Valor</th>
@@ -21,7 +22,8 @@
                                     <tbody>
                                         <?php foreach ($datos as $dato) {?>
                                         <tr>
-                                            <input  type="hidden" value="<?php echo $dato['id']; ?>">
+                                          
+                                            <td class="doc"><?php echo $dato['id']; ?></td>
                                             <td><?php echo $dato['Nivel']; ?></td>
                                             <td><?php echo $dato['puntos']; ?></td>
                                             <td><?php echo $dato['valor']; ?></td>
@@ -34,8 +36,6 @@
                         </div>
                     </div>
                 </div>
-
-               
 
                 <!-- Modal Editar datos de la tabla de niveles (Nombre,puntos Requeridos y Valor)-->
                 <div class="modal fade" id="editarRango" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editarRangoLabel" aria-hidden="true">
@@ -102,9 +102,21 @@
                         data: {
                         doc: doc
                         },
+                    }).done(function(data) {
+                        console.log(data);
+                        for (var i = 0; i < data.length; i++) {
+                        $('#name_nivel').val(data[i].Nivel);
+                        $('#puntos_req').val(data[i].puntos);
+                        $('#val_puntos').val(data[i].valor);
+                        
+                        }
+                    })
+                    .fail(function() {
+                        console.log("error");
+                    });
+                    $(".act_cambios").click(actualizarest);
                         
                     })
-
                 }  
         
       

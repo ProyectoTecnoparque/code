@@ -14,3 +14,17 @@ js
 
 
 Implementación de model visualización de datos para editar (estado, valor.)
+
+
+'usuario.id,usuario.email,usuario.password,usuario.documento,usuario.nombres,usuario.apellidos,usuario.tipo_usuario,usuario.direccion,usuario.genero,usuario.departamento,usuario.estado,usuar
+
+
+
+
+
+
+
+$usuarios = $usuario->select('*')->join('departamentos', 'departamentos.id_depa=usuario.departamento')
+									  ->where('usuarios.id', $id)
+									  ->first();
+		$data = ['datos' => $usuarios]

@@ -22,6 +22,17 @@ class Puntos extends BaseController
       public function BuscarNivel()
       {
       $punto_acum = new PuntosModel();
-        
+      $id = $this->request->getPostGet('doc');
+
+      $punto_nivel = $punto_acum->where(['id' => $id])->find();
+
+      $data=['datos' => $punto_nivel];
+		
+		echo view('template/header',);
+		echo view('',$data);
+		echo view('template/footer');
+
+
+
       }
 }
