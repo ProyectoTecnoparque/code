@@ -108,7 +108,7 @@
                         $('#name_nivel').val(data[i].Nivel);
                         $('#puntos_req').val(data[i].puntos);
                         $('#val_puntos').val(data[i].valor);
-                        
+
                         }
                     })
                     .fail(function() {
@@ -116,8 +116,8 @@
                     });
                     $(".act_cambios").click(actualizarest);
                         
-                    })
-                }  
+                    }
+                 
         
       
    

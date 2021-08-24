@@ -13,8 +13,13 @@ class  Historial extends BaseController
             $acumulador = $punto_acum->findAll();
             $data = ['datos' => $acumulador];
 
+
             echo view('template/header');
             echo view('Historial/HistorialExp',$data);
             echo view('template/footer');
+
+
+
+
       }
 }

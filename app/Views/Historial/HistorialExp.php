@@ -8,7 +8,6 @@
     <div class="card-header py-3">
         <h2 class="m-0 font-weight-bold text-primary">Historial de Experiencias</h2>
         <p class="mb-4">El contenido de esta tabla indica los rangos que se generan segun el puntaje que acumule segun el numero de expercias que reliza y este genera un descuento que se podra utilizar para las conocer nuevas experiencia en el eje cafetero .</p>
-
     </div>
     <div class="card-body">
         <div class="table-responsive mt-4">
@@ -24,7 +23,7 @@
                 </thead>
 
                 <tbody>
-                    <?php foreach ($datos as $dato) {?>
+                        <?php foreach ($datos as $dato) {?>
                     <tr>
                         <td><?php echo $dato['id']; ?></td>
                         <td><?php echo $dato['usuario_id']; ?></td>
