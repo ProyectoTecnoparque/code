@@ -3,7 +3,7 @@
 use CodeIgniter\Model;
 
 class HistorialModel extends Model {
-    protected $table      = 'punto_nivel';
+    protected $table      = 'point_acum';
     protected $primaryKey = 'id';
 
     protected $useAutoIncrement = true;

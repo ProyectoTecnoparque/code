@@ -33,21 +33,27 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Index::index');
+
 $routes->get('/Registrar', 'Index::registro');
 $routes->get('/Registrarusuario', 'Index::Registrarusuario');
-$routes->get('/cerrarSession', 'Index::cerrarSession');
-$routes->get('/cargarVistaInicio', 'Index::cargarVistaInicio');
 $routes->get('/ValidarDatosIngreso', 'Index::ValidarDatosIngreso');
+$routes->get('/cargarVistaInicio', 'Index::cargarVistaInicio');
+$routes->get('/cerrarSession', 'Index::cerrarSession');
 $routes->get('/Puntos', 'Puntos::historial_punto');
-$routes->get('/Historial', 'Historial::historial_expe');
-
-$routes->get('/InicioAdmin', 'Index::cargarVistaInicio');
 
 
-// Modulo Usuarios Vista Administrador
+// $routes->get('/InicioAdmin', 'Index::cargarVistaInicio');
 
+
+// Modulo  Vista Administrador
 $routes->get('/BuscarUsuarios','BuscarUsuarios::listar_usuarios');
 $routes->get('/BuscarId','BuscarUsuarios::Buscar_id');
+
+
+//Modulo  Vista Usuario
+$routes->get('/Historial', 'Historial::historial_expe');
+
+
 
 
 

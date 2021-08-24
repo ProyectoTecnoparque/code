@@ -23,7 +23,7 @@ class Index extends BaseController
        $registros = $usuario->where(['email' => $valor_email, 'password' => $valor_pass])->find();
 
        if (count($registros) > 0) {
-			    $mensaje = 'OK##DATA##LOGIN';
+			    $mensaje = 'OK##DATA##LOGIN'. $registros[0]["documento"] . "##" . $registros[0]["nombres"] . "##" . $registros[0]["apellidos"] . "##" . $registros[0]["email"] . "##" . $registros[0]["password"] . "##" . $registros[0]["direccion"] . "##" . $registros[0]["genero"] . "##" . $registros[0]["departamento"] . "##" . $registros[0]["estado"] . "##" . $registros[0]["tipo_usuario"];;
        } else {
              $this->session->set($registros[0]);
              $mensaje = 'ERROR##INVALID##DATA';
@@ -113,20 +113,10 @@ class Index extends BaseController
 					'departamento' => $departamento,
 					'estado' => 'Activo',
 					'tipo_usuario' => 'Usuario',
+					'puntos' => $puntos,
 					// Administrador
 				]);
 				if ($registros) {
-					$punto_nivel= new PuntosModel();
-					$acumpoint = $punto_nivel->where(['puntos' <= $puntos])->find('id');
-
-		         // Ingresando datos DB Historial de puntos 
-					$db_puntos =new HistorialModel();
-					$db_puntos ->insert([
-						'usuario_id' => $usuario->getInsertID(),
-						'acum_point' => $puntos,
-						'id_nivel'   => $acumpoint,
-					]);
-
 					$mensaje = "OK#CORRECT#DATA";
 				} else {
 					$mensaje = "OK#INVALID#DATA";
@@ -136,15 +126,20 @@ class Index extends BaseController
 		echo $mensaje;
 	}
 
+
   public function cargarVistaInicio()
    {
-      if ($this->session->has("tipo_usuario") == "Administrador") {
-         echo view('template/header');
-         echo view('template/header_admin');
-         echo view('template/footer');
-      } else {
-         return view('login');
-      }
+	$punto_acum = new PuntosModel();
+	$acumulador = $punto_acum->findAll();
+	$data = ['datos' => $acumulador];
+
+	echo view('template/header_admin');
+	echo view('table_puntos',$data);
+	echo view('template/footer');
+    //   if ($this->session->has("tipo_usuario") == "Administrador") {
+    //   } else {
+    //      return view('login');
+    //   }
    }
 
 }

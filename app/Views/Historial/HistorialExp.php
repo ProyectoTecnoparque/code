@@ -16,18 +16,23 @@
                 <thead>
                     <tr>
                         <th>Id</th>
+                        <th>Usuario</th>
                         <th>Experiencia</th>
-                        <th>Fecha</th>
                         <th>Valor</th>
+                        <th>Fecha</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                   
+                    <?php foreach ($datos as $dato) {?>
                     <tr>
-
+                        <td><?php echo $dato['id']; ?></td>
+                        <td><?php echo $dato['usuario_id']; ?></td>
+                        <td><?php echo $dato['id_nivel']; ?></td>
+                        <td><?php echo $dato['acum_point']; ?></td>
+                        <td><?php echo $dato['fecha_insert']; ?></td>
                     </tr>
-                    
+                    <?php } ?>   
                     
                 </tbody>
             </table>

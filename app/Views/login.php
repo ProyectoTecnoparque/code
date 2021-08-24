@@ -118,8 +118,8 @@ if (isset($_SESSION['tipo_usuario'])) {
                         if (data == "OK##DATA##LOGIN") {
                             // window.location = "<?php echo base_url('/Index/cargarVistaInicio'); ?>";
                             
-                            window.location = "<?php echo base_url('InicioAdmin'); ?>";
-                              console.log(data);
+                            window.location = "<?php echo base_url('/Index/cargarVistaInicio'); ?>";
+                            console.log(data);
                         }else if (data == "ERROR##INVALID##DATA") {
                          Swal.fire({
                                 icon: 'error',
