@@ -58,17 +58,7 @@ class Index extends BaseController
    
 
     // Cargar Vista del usuario
-	public function cargarVistaInicio()
-	{
-		$punto_nivel= new PuntosModel();
-		$niveles = $punto_nivel->findAll();
-		$data =['datos' => $niveles];
-  
-	    echo view('template/header');
-		echo view('table_puntos',$data);
-		echo view('template/footer');
-	  
-	}
+
 
 	 public function cerrarSession()
    {
@@ -145,11 +135,12 @@ class Index extends BaseController
 		}
 		echo $mensaje;
 	}
+
   public function cargarVistaInicio()
    {
-      if ($this->session->has("tipo_usuario")) {
+      if ($this->session->has("tipo_usuario") == "Administrador") {
          echo view('template/header');
-         echo view('ModuloUsuarios/perfil');
+         echo view('template/header_admin');
          echo view('template/footer');
       } else {
          return view('login');

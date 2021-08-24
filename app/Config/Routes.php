@@ -41,6 +41,9 @@ $routes->get('/ValidarDatosIngreso', 'Index::ValidarDatosIngreso');
 $routes->get('/Puntos', 'Puntos::historial_punto');
 $routes->get('/Historial', 'Historial::historial_expe');
 
+$routes->get('/InicioAdmin', 'Index::cargarVistaInicio');
+
+
 // Modulo Usuarios Vista Administrador
 
 $routes->get('/BuscarUsuarios','BuscarUsuarios::listar_usuarios');
