@@ -1,0 +1,16 @@
+ENLACE PAG INFORMACION DE LAS CONSULTAS EN CODEIGNITER
+https://runebook.dev/es/docs/codeigniter/database/query_builder#loading-the-query-builder
+
+
+Enlaces extras para implementar bootstrap desde la web 5.1
+https://getbootstrap.com/docs/5.1/getting-started/introduction/
+
+css
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+js
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+
+Implementación de model visualización de datos para editar (estado, valor.)

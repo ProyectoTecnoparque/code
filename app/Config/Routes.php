@@ -39,7 +39,9 @@ $routes->get('/Registrarusuario', 'Index::Registrarusuario');
 $routes->get('/ValidarDatosIngreso', 'Index::ValidarDatosIngreso');
 $routes->get('/cargarVistaInicio', 'Index::cargarVistaInicio');
 $routes->get('/cerrarSession', 'Index::cerrarSession');
+
 $routes->get('/Puntos', 'Puntos::historial_punto');
+$routes->get('/BuscarNivel', 'Puntos::BuscarNivel');
 
 
 // $routes->get('/InicioAdmin', 'Index::cargarVistaInicio');
@@ -47,7 +49,7 @@ $routes->get('/Puntos', 'Puntos::historial_punto');
 
 // Modulo  Vista Administrador
 $routes->get('/BuscarUsuarios','BuscarUsuarios::listar_usuarios');
-$routes->get('/BuscarId','BuscarUsuarios::Buscar_id');
+$routes->get('/BuscarId','BuscarUsuarios::BuscarId');
 
 
 //Modulo  Vista Usuario

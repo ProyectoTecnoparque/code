@@ -12,6 +12,7 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
+                                <th></th>
                                 <th>Documento</th>
                                 <th>Nombre</th>
                                 <th>Email</th>
@@ -26,7 +27,7 @@
                         <tbody>
                             <?php foreach ($datos as $dato) { ?>
                                 <tr>
-                                    <input type="hidden" value="<?php echo $dato['id']; ?>">
+                                    <!-- <input type="hidden" value="<?php echo $dato['id']; ?>"> -->
                                     <td class="doc"><?php echo $dato['id']; ?></td>
                                     <td><?php echo $dato['documento']; ?></td>
                                     <td><?php echo $dato['nombres'] . ' ' . $dato['apellidos']; ?></td>
@@ -37,7 +38,7 @@
                                     <td><?php echo $dato['departamento']; ?></td>
                                     <td><?php echo $dato['estado']; ?></td>
                                     <td><a type="button" class="btn btn-primary mr-2 modal_edit" href="<?php echo base_url('/BuscarusuId?doc=') . $dato['id']; ?>"><i class="far fa-eye"></i></a><a class="btn btn-danger toastrDefaultSuccess desactivar" id="desactivar"><i class="fas fa-user-lock"></i></a></td>
-                                     
+    
                                 </tr>
                             <?php } ?>
                         </tbody>
@@ -46,26 +47,20 @@
             </div>
         </div>
     </div>
+    <button id="ejecutar">Iniciar</button>   
     <!-- /.container-fluid -->
 
 </div>
 <!-- End of Main Content -->
-<script>
-    // $(document).ready(iniciar);
+ <script type="text/javascript">
+   $(document).ready(iniciar);
 
-    // function iniciar(){
-    //     $(".mod_estado").click(buscarporId);
-    //     $(".desactivar").click(inactivarusuario);
+    function iniciar(){
+        $("#ejecutar").click(inactivarusuario);
 
-    // }
-    // function inactivarusuario(){
-    //     var id =$(this).click("tr").find("doc").text();
-    //     alert (id);
-    // }
-    $(document).ready(function() {
-            $("#desactivar").click(function(event) {
-                event.preventDefault(); 
-                alert("funciona")
-            });
-        });
+    }
+    function inactivarusuario(){
+        alert ("ups!");
+    }
+   
 </script>

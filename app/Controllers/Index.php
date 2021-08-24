@@ -89,14 +89,14 @@ class Index extends BaseController
 		$departamento = $this->request->getPostGet('departamento');
 		$puntos =$this->request->getPostGet('puntos');
 	
+
+		// Verificar que el documento no este previamente registrado
 		$usuario = new ModelUsuario();
 		$consulta = $usuario->where(['documento' => $documento])->find();
-
-
 		if (sizeof($consulta) > 0) {
 			$mensaje = "FAIL#DOCUMENTO";
 		} else {
-
+            // Verificar que el correo no se encuentre en la bd
 			$consulta = $usuario->where(['email' => $email])->find();
 
 			if (sizeof($consulta) > 0) {
@@ -117,6 +117,17 @@ class Index extends BaseController
 					// Administrador
 				]);
 				if ($registros) {
+					$punto_nivel= new PuntosModel();
+					$acumpoint = $punto_nivel->where(['puntos <', $puntos])->get('id');
+
+		         // Ingresando datos DB Historial de puntos 
+					$db_puntos =new HistorialModel();
+					$db_puntos ->save([
+						'usuario_id' => $usuario->getInsertID(),
+						'acum_point' => $puntos,
+						'id_nivel'   => $acumpoint,
+					]);
+
 					$mensaje = "OK#CORRECT#DATA";
 				} else {
 					$mensaje = "OK#INVALID#DATA";
