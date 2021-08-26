@@ -3,7 +3,7 @@ if (isset($_SESSION['tipo_usuario'])) {
    header("Location: " . base_url('Inicio'));
    die();
 }
-?> 
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -90,62 +90,82 @@ if (isset($_SESSION['tipo_usuario'])) {
    <script src="<?php echo base_url('/plugins/sweetalert2/sweetalert2.all.min.js'); ?>"></script>
 
 
-    <script type="text/javascript">
+   
+<script type="text/javascript">
+   $(document).ready(function() {
+      $("#formulario_ingreso").submit(function(event) {
+         event.preventDefault();
+         validarDatosIngreso();
+      });
+   });
 
-        $(document).ready(function() {
-            $("#formulario_ingreso").submit(function(event) {
-                event.preventDefault(); 
-                validarDatosIngreso();
-            });
-        });
+   function validarDatosIngreso() {
+      email = $("#email").val();
+      password= $("#password").val();
 
-        function validarDatosIngreso() {
-            email = $("#email").val();
-            password = $("#password").val();
+      if (email != "" && password!= "") {
 
-            if (email != "" && password != "") {
-               
-                $.ajax({
-                        url: "<?php echo base_url('/Index/ValidarDatosIngreso');?>",
-                        type: 'POST',
-                        dataType: 'text',
-                        data: {
-                            email: email,
-                            password: password
-                        },
-                    })
-                    .done(function(data) {
-                        if (data == "OK##DATA##LOGIN") {
-                            // window.location = "<?php echo base_url('/Index/cargarVistaInicio'); ?>";
-                            
-                            window.location = "<?php echo base_url('/Index/cargarVistaInicio'); ?>";
-                            console.log(data);
-                        }else if (data == "ERROR##INVALID##DATA") {
-                         Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: 'No se pudo encontrar el usuario',
-                            })
-                        } 
-                    })
-                    .fail(function(data) {
-                        console.log(data);
-                        Swal.fire({
-                        icon: 'warning',
-                        title: 'Error!',
-                        text: 'Intente de Nuevo'
-                })
-            });
+         $.ajax({
+            url: "<?php echo base_url('/Index/ValidarDatosIngreso') ?>",
+            type: 'POST',
+            dataType: 'text',
+            data: {
+               email: email,
+               password: password
+            },
+         })
+         .done(function(data) {
+
+            if (data == "OK##DATA##LOGIN") {
+               window.location = "<?php echo base_url('/Index/cargarVistaInicio'); ?>";
+            } else if (data == "NOT##ACCESS") {
+               $("#campo_password").val("");
+               Swal.fire({
+                  icon: 'warning',
+                  title: 'No tienes permitido el acceso!',
+                  text: 'Los clientes solo pueden ingresar desde la app movil: Agroplaza'
+               })
+            } else if (data == "NOT##STATUS") {
+               $("#campo_password").val("");
+               Swal.fire({
+                  icon: 'warning',
+                  title: 'Aun sigues pendiente por revision!',
+                  text: 'La informacion de tu profesión aun no ha sido revisada.',
+                  footer: 'Por favor, ten paciencia...'
+               })
+            } else if (data == "NOT##STATUS##OFF") {
+               $("#campo_password").val("");
+               Swal.fire({
+                  icon: 'error',
+                  title: 'Has sido inactivado del sistema!',
+                  text: 'Tu usuario ahora mismo se encuentra inactivo en el sistema, no podrás ingresar.',
+                  footer: 'Si fue un error entonces puedes enviar un mensaje al correo:<i class="text-success">agroplaza@gmail.com</i>'
+               })
             } else {
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Campos vacios!',
-                    text: 'Debes llenar todos los campos.'
-                })
+               $("#campo_password").val("");
+               Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'No se pudo encontrar el usuario',
+                  footer: '<a href="<?php echo base_url('Registrar'); ?>">Todavia no tienes una cuenta? Registrate!.</a>'
+               })
             }
-        }
 
-    </script>
+         })
+         .fail(function(data) {
+            console.log("error");
+            console.log(data);
+         });
+
+      } else {
+         Swal.fire({
+            icon: 'warning',
+            title: 'Campos vacios!',
+            text: 'Debes llenar todos los campos.'
+         })
+      }
+   }
+   </script>
 </body>
 
 </html>

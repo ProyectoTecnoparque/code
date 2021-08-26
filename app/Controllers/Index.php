@@ -11,51 +11,34 @@ class Index extends BaseController
 	// LOGIN USUARIO
 	public function index()
 	{
-	return view('login');
+	   return view('login');
 	}
+
+
+
     // Validar datos de ingreso
 	public function ValidarDatosIngreso()
     {
-       $valor_email = $this->request->getPostGet('email');
-       $valor_pass = md5($this->request->getPostGet('password'));
- 
-       $usuario = new ModelUsuario();
-       $registros = $usuario->where(['email' => $valor_email, 'password' => $valor_pass])->find();
+      $valor_email = $this->request->getPostGet('email');
+      $valor_pass = md5($this->request->getPostGet('password'));
 
-       if (count($registros) > 0) {
-			    $mensaje = 'OK##DATA##LOGIN'. $registros[0]["documento"] . "##" . $registros[0]["nombres"] . "##" . $registros[0]["apellidos"] . "##" . $registros[0]["email"] . "##" . $registros[0]["password"] . "##" . $registros[0]["direccion"] . "##" . $registros[0]["genero"] . "##" . $registros[0]["departamento"] . "##" . $registros[0]["estado"] . "##" . $registros[0]["tipo_usuario"];;
-       } else {
-             $this->session->set($registros[0]);
-             $mensaje = 'ERROR##INVALID##DATA';
-       }
-       echo $mensaje;
+      $usuarios_db = new UsuariosModel();
+      $registros = $usuarios_db->where(['email' => $valor_email, 'password' => $valor_pass])->find();
+
+      if (sizeof($registros) == 0) {
+         $mensaje = 'ERROR##INVALID##DATA';
+      } else {
+          if ($registros[0]["estado"] == "INACTIVO") {
+            $mensaje = 'NOT##STATUS##OFF';
+         } else {
+            unset($registros[0]['password']);
+
+            $this->session->set($registros[0]);
+            $mensaje = 'OK##DATA##LOGIN';
+         }
+      }
+      echo $mensaje;;
     }
-    	
-    public function login() {
-		$usuario = $this->request->getPost('usuario');
-		$password = $this->request->getPost('password');
-		$Usuario = new ModelUsuario();
-
-		$datosUsuario = $Usuario->obtenerUsuario(['usuario' => $usuario]);
-
-		if (count($datosUsuario) > 0 && 
-			password_verify($password, $datosUsuario[0]['password'])) {
-
-			$data = [
-						"usuario" => $datosUsuario[0]['usuario'],
-						"type" => $datosUsuario[0]['type']
-					];
-
-			$session = session();
-			$session->set($data);
-
-			return redirect()->to(base_url('/inicio'))->with('mensaje','1');
-
-		} else {
-			return redirect()->to(base_url('/'))->with('mensaje','0');
-		}
-	}
-   
 
     // Cargar Vista del usuario
 
@@ -117,16 +100,7 @@ class Index extends BaseController
 					// Administrador
 				]);
 				if ($registros) {
-					$punto_nivel= new PuntosModel();
-					$acumpoint = $punto_nivel->where(['puntos <', $puntos])->get('id');
-
-		         // Ingresando datos DB Historial de puntos 
-					$db_puntos =new HistorialModel();
-					$db_puntos ->save([
-						'usuario_id' => $usuario->getInsertID(),
-						'acum_point' => $puntos,
-						'id_nivel'   => $acumpoint,
-					]);
+				
 
 					$mensaje = "OK#CORRECT#DATA";
 				} else {
@@ -140,17 +114,22 @@ class Index extends BaseController
 
   public function cargarVistaInicio()
    {
-	$punto_acum = new PuntosModel();
-	$acumulador = $punto_acum->findAll();
-	$data = ['datos' => $acumulador];
 
-	echo view('template/header_admin');
-	echo view('table_puntos',$data);
-	echo view('template/footer');
-    //   if ($this->session->has("tipo_usuario") == "Administrador") {
-    //   } else {
-    //      return view('login');
-    //   }
+   	 if ($this->session->has("tipo_usuario")) {
+        $punto_acum = new PuntosModel();
+		$acumulador = $punto_acum->findAll();
+		$data = ['datos' => $acumulador];
+
+		echo view('template/header_admin');
+		echo view('table_puntos',$data);
+		echo view('template/footer');
+      } else {
+         return view('login');
+      }
+
+
+
+
    }
 
 }

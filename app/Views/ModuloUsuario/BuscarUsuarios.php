@@ -9,7 +9,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive mt-4">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table  id="dataTable" width="100%" cellspacing="0"  class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th></th>
@@ -107,7 +107,8 @@
    $(document).ready(iniciar);
 
     function iniciar(){
-        $("#ejecutar").click(inactivarusuario);
+ 
+    $("#ejecutar").click(inactivarusuario);
 
     }
     function inactivarusuario(){

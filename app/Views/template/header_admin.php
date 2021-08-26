@@ -1,6 +1,9 @@
 <?php
-
-?> 
+if (!isset($_SESSION['tipo_usuario'])) {
+  header("Location: " . base_url());
+  die();
+}
+?>
 <!DOCTYPE html>
 <html lang="es"> 
 <head>
@@ -18,7 +21,7 @@
     <link href="<?php echo base_url('/css/sb-admin-2.min.css');?>" rel="stylesheet">
     <link href="<?php echo base_url('/vendor/datatables/dataTables.bootstrap4.min.css');?>" rel="stylesheet">
 </head>
-<body id="page-top">
+<body class="hold-transition sidebar-mini layout-fixed">
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->

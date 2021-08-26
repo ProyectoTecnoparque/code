@@ -165,102 +165,102 @@
    <script src="<?php echo base_url('/plugins/sweetalert2/sweetalert2.all.min.js'); ?>"></script>    
 
    <script type="text/javascript">
-    $(document).ready(function(){
-   
-       $("#formulario_registro").submit(function(event){
-          event.preventDefault();
-          registrarusuario();
-       });
- });
-       function registrarusuario(){
-          documento = $('#documento').val();
-          nombres = $('#nombres').val();
-          apellidos = $('#apellidos').val();
-          email = $('#email').val();
-          password = $('#password').val();
-          passwordconfirm = $('#passwordconfirm').val();
-          direccion = $('#direccion').val();
-          genero = $('#genero').val();
-          departamento = $('#departamento').val();
-          puntos = $('#puntos').val();
-          
+          $(document).ready(function(){
+         
+             $("#formulario_registro").submit(function(event){
+                event.preventDefault();
+                registrarusuario();
+             });
+          });
+             function registrarusuario(){
+                documento = $('#documento').val();
+                nombres = $('#nombres').val();
+                apellidos = $('#apellidos').val();
+                email = $('#email').val();
+                password = $('#password').val();
+                passwordconfirm = $('#passwordconfirm').val();
+                direccion = $('#direccion').val();
+                genero = $('#genero').val();
+                departamento = $('#departamento').val();
+                puntos = $('#puntos').val();
+                
 
-          if(documento != "" && nombres != "" && apellidos!= "" && email!= "" && password != ""   && direccion!= "" &&genero!= "" && departamento!= "" && passwordconfirm!= "" && puntos!= ""){
-            $.ajax({
-               url:'<?php echo base_url('/Index/Registrarusuario')?>',
-               type: 'POST',
-               dataType:"text",
-               data:{
-                  documento:documento,
-                  nombres:nombres,
-                  apellidos:apellidos,
-                  email:email,
-                  direccion:direccion,
-                  genero:genero,
-                  departamento:departamento,
-                  puntos:puntos,
-                  password:password
-               }
-            })
-            .done(function(data){
-               if (data == "FAIL#DOCUMENTO") {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Ya esta registrado en el sistema!',
-                        text: 'El documento ingresado ya esta registrado.'
-                    })
-                } else if (data == "FAIL#EMAIL") {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Ya esta registrado en el sistema!',
-                        text: 'El correo ingresado ya esta registrado.'
-                    })
-                } else if (data == "OK#CORRECT#DATA") {
-
-                  Swal.fire({
-                     title: 'Iniciar Sesión ahora?',
-                     showDenyButton: true,
-                     showCancelButton: true,
-                     confirmButtonText: `Aceptar`,
-                     }).then((result) => {
-                     /* Read more about isConfirmed, isDenied below */
-                     if (result.isConfirmed) {
-                        window.location = "<?php echo base_url('/Index/cargarVistaInicio'); ?>";
-                     } else if (result.isDenied) {
-                        window.location = "<?php echo base_url('/Index/cargarVistaInicio'); ?>";
+                if(documento != "" && nombres != "" && apellidos!= "" && email!= "" && password != ""   && direccion!= "" &&genero!= "" && departamento!= "" && passwordconfirm!= "" && puntos!= ""){
+                  $.ajax({
+                     url:'<?php echo base_url('/Index/Registrarusuario')?>',
+                     type: 'POST',
+                     dataType:"text",
+                     data:{
+                        documento:documento,
+                        nombres:nombres,
+                        apellidos:apellidos,
+                        email:email,
+                        direccion:direccion,
+                        genero:genero,
+                        departamento:departamento,
+                        puntos:puntos,
+                        password:password
                      }
-                     })
-                  
-                  }else if (data == "OK#CORRECT#DATA") {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Exitoso!',
-                        text: 'Los datos del usuario han sido registrados.'
-                    })
-                  }else if (data == "OK#INVALID#DATA") {
-                    Swal.fire({
+                  })
+                  .done(function(data){
+                     if (data == "FAIL#DOCUMENTO") {
+                          Swal.fire({
+                              icon: 'error',
+                              title: 'Ya esta registrado en el sistema!',
+                              text: 'El documento ingresado ya esta registrado.'
+                          })
+                      } else if (data == "FAIL#EMAIL") {
+                          Swal.fire({
+                              icon: 'error',
+                              title: 'Ya esta registrado en el sistema!',
+                              text: 'El correo ingresado ya esta registrado.'
+                          })
+                      } else if (data == "OK#CORRECT#DATA") {
+
+                        Swal.fire({
+                           title: 'Iniciar Sesión ahora?',
+                           showDenyButton: true,
+                           showCancelButton: true,
+                           confirmButtonText: `Aceptar`,
+                           }).then((result) => {
+                           /* Read more about isConfirmed, isDenied below */
+                           if (result.isConfirmed) {
+                              window.location = "<?php echo base_url('/Index/cargarVistaInicio'); ?>";
+                           } else if (result.isDenied) {
+                              window.location = "<?php echo base_url('/Index/cargarVistaInicio'); ?>";
+                           }
+                           })
+                        
+                        }else if (data == "OK#CORRECT#DATA") {
+                          Swal.fire({
+                              icon: 'success',
+                              title: 'Exitoso!',
+                              text: 'Los datos del usuario han sido registrados.'
+                          })
+                        }else if (data == "OK#INVALID#DATA") {
+                          Swal.fire({
+                              icon: 'error',
+                              title: 'Error!',
+                              text: 'Los datos del usuario NO han sido registrados.'
+                          })
+                        }
+                  })
+                  .fail(function(data) {
+                     Swal.fire({
                         icon: 'error',
-                        title: 'Error!',
-                        text: 'Los datos del usuario NO han sido registrados.'
-                    })
-                  }
-            })
-            .fail(function(data) {
-               Swal.fire({
-                  icon: 'error',
-                  title: 'Ocurrio algo!',
-                  text: 'Ha ocurrido un error en el servidor, no se pudo registrar la información.'
-               })
-            });
-          }else{
-            Swal.fire({
-               icon: 'warning',
-               title: 'Faltan datos',
-               text: 'Debes llenar todos los campos del formulario'
-            })
-          }
-        }
-   
+                        title: 'Ocurrio algo!',
+                        text: 'Ha ocurrido un error en el servidor, no se pudo registrar la información.'
+                     })
+                  });
+                }else{
+                  Swal.fire({
+                     icon: 'warning',
+                     title: 'Faltan datos',
+                     text: 'Debes llenar todos los campos del formulario'
+                  })
+                }
+              }
+         
    </script>
 
 </body>
