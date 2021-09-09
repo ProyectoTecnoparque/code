@@ -60,39 +60,39 @@
                             <h5 class="modal-title" id="editarRangoLabel">Editar Datos</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-
-                        <div class="modal-body">
-                        <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="name_nivel" id="name_nivel" placeholder="Nombre del Nivel">
-                                <div class="input-group-append">
-                                    <div class="input-group-text">
-                                        <span class="fas fa-certificate"></span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="input-group mb-4">
-                                
-                                <input type="text" class="form-control" id="puntos_req" name="puntos_req" placeholder="Ingrese el nuevo datos">
-                                <div class="input-group-append mr-2">
-                                    <div class="input-group-text">
-                                        <span> <i class="fas fa-coins"></i></span>
-                                        
+                       <form action="" method="POST">
+                            <div class="modal-body">
+                            <div class="input-group mb-3">
+                                    <input type="text" class="form-control" name="name_nivel" id="name_nivel" placeholder="Nombre del Nivel">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                            <span class="fas fa-certificate"></span>
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control" id="val_puntos" name="val_puntos" placeholder="Ingrese el nuevo datos">
-                                    <div class="input-group-append">
-                                    <div class="input-group-text">
-                                        <span class="fas fa-hand-holding-usd"></span>
-                                    </div>
-                                    </div>
                                 </div>
-                        </div>
-                    
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary">Guardar</button>
-                        </div>
+
+                                <div class="input-group mb-4">
+                                    
+                                    <input type="text" class="form-control" id="puntos_req" name="puntos_req" placeholder="Ingrese el nuevo datos">
+                                    <div class="input-group-append mr-2">
+                                        <div class="input-group-text">
+                                            <span> <i class="fas fa-coins"></i></span>
+                                            
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control" id="val_puntos" name="val_puntos" placeholder="Ingrese el nuevo datos">
+                                        <div class="input-group-append">
+                                        <div class="input-group-text">
+                                            <span class="fas fa-hand-holding-usd"></span>
+                                        </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-primary">Guardar</button>
+                            </div>
+                        </form>
                         </div>
                         
                     </div>

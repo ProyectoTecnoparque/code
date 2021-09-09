@@ -32,7 +32,5 @@ class Puntos extends BaseController
 		echo view('',$data);
 		echo view('template/footer');
 
-
-
       }
 }

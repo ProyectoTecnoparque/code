@@ -34,10 +34,7 @@ CREATE TABLE IF NOT EXISTS `point_acum` (
   `id_nivel` int(11) NOT NULL,
   `fecha_insert` timestamp NULL DEFAULT NULL,
   UNIQUE KEY `id_nivel` (`id_nivel`) USING BTREE,
-  UNIQUE KEY `usuario_id` (`usuario_id`),
-  UNIQUE KEY `acum_point` (`acum_point`),
-  CONSTRAINT `point_acum_ibfk_1` FOREIGN KEY (`id_nivel`) REFERENCES `punto_nivel` (`id`),
-  CONSTRAINT `point_acum_ibfk_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`)
+  UNIQUE KEY `usuario_id` (`usuario_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- La exportación de datos fue deseleccionada.
@@ -69,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `fecha_insert` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `puntos` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
 
 -- La exportación de datos fue deseleccionada.
 

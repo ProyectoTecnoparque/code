@@ -88,40 +88,37 @@
             </div>
             <!-- End of Main Content -->
 
-            <script >
+        <script >
 
-                $(document).ready(iniciar);
+            $(document).ready(iniciar);
 
-                function iniciar(){
-                    var doc = $(this).parents("tr").find("doc").text();
+            function iniciar(){
+                var doc = $(this).parents("tr").find("doc").text();
 
-                    $.ajax({
-                        url: '<?php echo base_url('/Puntos/BuscarNivel'); ?>',
-                        type: 'POST',
-                        dataType: "json",
-                        data: {
-                        doc: doc
-                        },
-                    }).done(function(data) {
-                        console.log(data);
-                        for (var i = 0; i < data.length; i++) {
-                        $('#name_nivel').val(data[i].Nivel);
-                        $('#puntos_req').val(data[i].puntos);
-                        $('#val_puntos').val(data[i].valor);
+                $.ajax({
+                    url: '<?php echo base_url('/Puntos/BuscarNivel'); ?>',
+                    type: 'POST',
+                    dataType: "json",
+                    data: {
+                    doc: doc
+                    },
+                }).done(function(data) {
+                    console.log(data);
+                    for (var i = 0; i < data.length; i++) {
+                    $('#name_nivel').val(data[i].Nivel);
+                    $('#puntos_req').val(data[i].puntos);
+                    $('#val_puntos').val(data[i].valor);
 
-                        }
-                    })
-                    .fail(function() {
-                        console.log("error");
-                    });
-                    $(".act_cambios").click(actualizarest);
-                        
                     }
-                 
-        
-      
-   
-   </script>
+                })
+                .fail(function() {
+                    console.log("error");
+                });
+                $(".act_cambios").click(actualizarest);
+                    
+                }
+
+        </script>
 
            
 

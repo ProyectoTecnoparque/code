@@ -27,3 +27,4 @@ INNER JOIN departamentos ON usuario.departamento = departamentos.id_depa
 
 
 
+    
